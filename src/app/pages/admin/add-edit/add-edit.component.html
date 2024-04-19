@@ -1,0 +1,50 @@
+<form #data="ngForm" (ngSubmit)="Add(data.value)">
+    <div class="header">Add Product</div>
+    <div class="formfield">
+        <mat-form-field>
+            <mat-label>Product SKU</mat-label>
+            <input matInput type="text" name="productSku" [(ngModel)]="productObj.productSku">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Product Name</mat-label>
+            <input matInput type="text" name="productName" [(ngModel)]="productObj.productName">
+        </mat-form-field>
+    </div>
+    <div class="formfield">
+        <mat-form-field>
+            <mat-label>Product Price</mat-label>
+            <input matInput type="text" name="productPrice" [(ngModel)]="productObj.productPrice">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Product Short Name</mat-label>
+            <input matInput type="text" name="productShortName" [(ngModel)]="productObj.productShortName">
+        </mat-form-field>
+    </div>
+    <div class="formfield">
+        <mat-form-field>
+            <mat-label>Product Category</mat-label>
+            <mat-select name="productCategory" [(ngModel)]="productObj.categoryId">
+                <mat-option *ngFor="let item of category" [value]="item">{{item.categoryName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Product Description</mat-label>
+            <textarea matInput type="text" name="productDescription"
+                [(ngModel)]="productObj.productDescription"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="formfield">
+        <mat-form-field>
+            <mat-label>Delivery Time Span</mat-label>
+            <input matInput type="text" name="deliveryTimeSpan" [(ngModel)]="productObj.deliveryTimeSpan">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Product Image URL</mat-label>
+            <input matInput type="text" name="productImageUrl" [(ngModel)]="productObj.productImageUrl">
+        </mat-form-field>
+    </div>
+    <div class="action">
+        <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="primary" [mat-dialog-close]="data.value">Add</button>
+    </div>
+</form>

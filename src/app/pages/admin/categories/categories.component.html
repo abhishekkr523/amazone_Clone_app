@@ -1,0 +1,16 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of categoryList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.categoryName }}</td>
+            <td><button class=" btn " style="background-color: #232f3e;color: #ffffff;">Action</button></td>
+        </tr>
+    </tbody>
+</table>

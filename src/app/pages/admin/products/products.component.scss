@@ -1,0 +1,71 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  
+    div {
+      margin-bottom: 15px;
+  
+      label {
+        font-weight: bold;
+      }
+  
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 5px;
+      }
+  
+      textarea {
+        height: 100px;
+      }
+    }
+  
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #45a049;
+      }
+  
+      &:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+
+  .image {
+    transition: transform 0.3s;
+    
+}
+
+.image:hover {
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+
+.card {
+  overflow: hidden;
+  transition:  box-shadow 0.3s; /* Add box-shadow to the transition */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add initial box shadow */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change box shadow on hover */
+}
+

@@ -1,0 +1,79 @@
+<nav class="header">
+  <div class="upper-header">
+    <div class="upper-header-left">
+      <div class="logo"> 
+        <img src="/assets/images/amazon_logo.png" alt="">
+        <span>.in</span>
+      </div>
+      <div class="location">
+        <span class="address">bagaha siwan bihar</span>
+        <span class="update-location"><i class="fa-solid fa-location-dot"></i>Updated Location</span>
+      </div>
+    </div>
+
+    <div class="upper-header-mid">
+      <div class="category">
+        <select name="" id="" class="form-control">
+            <option value="" *ngFor="let item of categoryList" [value]="item.categoryId">
+                {{item.categoryName}} 
+            </option>
+            <span>hh</span>
+        </select>
+    </div>
+      <input type="search" name="" id="" placeholder="Search Amazon.in">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="upper-header-right">
+      <span class="span">country</span>
+      <span class="span" routerLink="login"><i class="fa-solid fa-right-to-bracket" style="font-size: 25px;"></i></span>
+      <span class=" span return"><span>Return</span> <span class="order">& order</span></span>
+      <span class="span"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></span>
+    </div>
+  </div>
+</nav>
+<nav class="navbar navbar-expand-sm navbar-dark ">
+  <div class="lower-header container-fluid">
+    <a class="navbar-brand" href="javascript:void(0)"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto" style="color: #ffffff;">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="categories">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Amazon miniTV</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Sell</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Best Sellers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Mobiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Customer Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Home & Kitchen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Fashion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Electronics</a>
+        </li>
+      </ul>
+      <a href="https://www.amazon.in/b/?_encoding=UTF8&node=6967393031&ref_=nav_swm_IN_swm_appdownload&pf_rd_p=9a720825-63a8-4ad8-b8fe-75ba0d4f0319&pf_rd_s=nav-sitewide-msg&pf_rd_t=4201&pf_rd_i=navbar-4201&pf_rd_m=A21TJRUUN4KGV&pf_rd_r=Y8XKB1NT97P6T54ZM118"><img src="/assets/images/download-app.jpg" alt=""></a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
