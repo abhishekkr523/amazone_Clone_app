@@ -17,14 +17,14 @@ import { CommonModule } from '@angular/common';
     ]
 })
 export class LayoutComponent {
-    categoryList:any[]=[];
-constructor(private productSrv:ProductService){
-this.getAllCategory()
-}
+    categoryList: any[] = [];
+    constructor(private productSrv: ProductService) {
+        this.getAllCategory()
+    }
     getAllCategory() {
         this.productSrv.getCategory().subscribe((result: any) => {
-          this.categoryList = result.data;
-          console.log("lkl", this.categoryList);
+            this.categoryList = result.data;
+            console.log("lkl", this.categoryList);
         });
-      }
+    }
 }

@@ -17,8 +17,8 @@ import { ProductService } from '../../../services/product/product.service';
   styleUrl: './add-edit.component.scss'
 })
 export class AddEditComponent implements OnInit {
-  category: any
-  productsList:any[]=[];
+  category: any;
+  productsList: any[] = [];
   productObj: any = {
     "productId": 0,
     "productSku": "",
@@ -31,15 +31,37 @@ export class AddEditComponent implements OnInit {
     "categoryId": 0,
     "productImageUrl": ""
   }
+  isEditModeData: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-
+    console.log("dataa", data);
+    this.isEditModeData=data
+    this.initializeProduct();
   }
   ngOnInit(): void {
 
-    this.category = this.data
+    // this.category = this.data.categoryList;
+    // this.productObj = this.data.item;
+    this.productObj = { ...this.productObj, ...this.data.item };
+    this.category = this.data.categoryList;
+    
+
     console.log("ookk", this.category)
     console.log("formdata", this.productObj)
     // this.Add();
+  }
+  initializeProduct(): void {
+    this.productObj = {
+      "productId": 0,
+      "productSku": "",
+      "productName": "",
+      "productPrice": 0,
+      "productShortName": "",
+      "productDescription": "",
+      "createdDate": new Date(),
+      "deliveryTimeSpan": "",
+      "categoryId": 0,
+      "productImageUrl": ""
+    };
   }
   Add(Sdata: any) {
     console.log("op", Sdata)

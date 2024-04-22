@@ -15,6 +15,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
+  isEditMode: boolean = false;
+  addEdit : boolean = false;
   productObj: any = {
     "productId": 0,
     "productSku": "",
@@ -22,7 +24,7 @@ export class ProductsComponent implements OnInit {
     "productPrice": 0,
     "productShortName": "",
     "productDescription": "",
-    "createdDate": new Date(),  
+    "createdDate": new Date(),
     "deliveryTimeSpan": "",
     "categoryId": 0,
     "productImageUrl": ""
@@ -31,7 +33,7 @@ export class ProductsComponent implements OnInit {
   productsList: any[] = []
   dataFromDialog: any;
 
-  constructor(private productSrv: ProductService,public dialog: MatDialog,) {
+  constructor(private productSrv: ProductService, public dialog: MatDialog,) {
 
   }
 
@@ -46,20 +48,20 @@ export class ProductsComponent implements OnInit {
   openSidePanel() {
     this.isSidePanelVisible = true
   }
-  // constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  addProductThroughDialog(): void {
     const dialogRef = this.dialog.open(AddEditComponent, {
       width: '500px',
       disableClose: true,
-      data:this.categoryList
-      
-      // data: {name: this.name, animal: this.animal},
+      data: {
+        categoryList: this.categoryList,
+        isEditMode:false
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.dataFromDialog = result;
-      console.log("formDataAtProductPage",this.dataFromDialog);
+      console.log("formDataAtProductPage", this.dataFromDialog);
 
       this.productObj.productSku = this.dataFromDialog.productSku;
       this.productObj.productName = this.dataFromDialog.productName;
@@ -69,18 +71,18 @@ export class ProductsComponent implements OnInit {
       this.productObj.deliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
       this.productObj.categoryId = this.dataFromDialog.categoryId;
       this.productObj.productImageUrl = this.dataFromDialog.productImageUrl;
-      console.log("productObj",this.productObj)
-      
-      
+      console.log("productObj", this.productObj)
+
+
       setTimeout(() => {
         this.onSave()
       }, 3000)
     });
 
-    
+
   }
 
-  
+
   onSave() {
     console.log("llbb", this.productObj);
     this.productSrv.saveProduct(this.productObj).subscribe((res: any) => {
@@ -91,9 +93,10 @@ export class ProductsComponent implements OnInit {
         console.log("jj", res)
       } else {
         alert("An error occurred.");
-      }})
+      }
+    })
   }
-  
+
 
   closeSidePanel() {
     this.isSidePanelVisible = false
@@ -113,11 +116,17 @@ export class ProductsComponent implements OnInit {
   getAllCategory() {
     this.productSrv.getCategory().subscribe((result: any) => {
       this.categoryList = result.data;
-      console.log("ll", this.categoryList);
+      console.log("lll", this.categoryList);
     });
   }
+  // getAllCategory() {
+  //   this.productSrv.getCategory().subscribe((result: any) => {
+  //     this.categoryList = result.data;
+  //     console.log("lkl", this.categoryList);
+  //   });
+  // }
 
-  
+
   onUpdate() {
     this.productSrv.updateProduct(this.productObj).subscribe((res: any) => {
       debugger;
@@ -129,8 +138,9 @@ export class ProductsComponent implements OnInit {
         alert("An error occur.");
       }
     })
-    this.isSidePanelVisible=false;
+    this.isSidePanelVisible = false;
   }
+  
   deleteProduct(obj: any) {
     console.log("kk", obj.productId)
     this.productSrv.deleteProduct(obj.productId).subscribe((res) => {
@@ -138,7 +148,7 @@ export class ProductsComponent implements OnInit {
       if (res) {
         alert("Delete successfull.");
         this.getProducts();
-        console.log("jj", res)
+        console.log("response", res)
       } else {
         alert("An error occur.");
       }
@@ -146,6 +156,42 @@ export class ProductsComponent implements OnInit {
   }
   editProduct(item: any) {
     this.productObj = item;
-    this.isSidePanelVisible=true
+    this.isSidePanelVisible = true
+  }
+  editProductThroughDialog(item: any): void {
+    this.productObj = item;
+    const dialogRef = this.dialog.open(AddEditComponent, {
+      width: '500px',
+      disableClose: true,
+      data: {
+        categoryList: this.categoryList,
+        item: item,
+        isEditMode:true
+      }
+
+      // data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.dataFromDialog = result;
+      console.log("formDataAtProductPage", this.dataFromDialog);
+
+      this.productObj.productSku = this.dataFromDialog.productSku;
+      this.productObj.productName = this.dataFromDialog.productName;
+      this.productObj.productPrice = this.dataFromDialog.productPrice;
+      this.productObj.productShortName = this.dataFromDialog.productShortName;
+      this.productObj.productDescription = this.dataFromDialog.productDescription;
+      this.productObj.deliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
+      this.productObj.categoryId = this.dataFromDialog.categoryId;
+      this.productObj.productImageUrl = this.dataFromDialog.productImageUrl;
+      console.log("productObj", this.productObj)
+
+
+      setTimeout(() => {
+        this.onUpdate()
+      }, 3000)
+    });
+
+
   }
 }

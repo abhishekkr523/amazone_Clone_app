@@ -5,7 +5,7 @@
                 <div class="row" style=" background-color: #232f3e;">
                     <div class="col-6 text-white">Product List</div>
                     <div class="col-6 text-end">
-                        <button class="btn btn-sm btn-success" (click)="openDialog()">Add new</button>
+                        <button class="btn btn-sm btn-success" (click)="addProductThroughDialog()">Add new</button>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                                 <h4 class="card-title">{{item.productName}}</h4>
                                 <p class="card-text">{{item.categoryName}}</p>
                                 <div class="button">
-                                    <a class="btn" style="background-color: #febd69;" (click)="editProduct(item)">Edit</a>
+                                    <a class="btn" style="background-color: #febd69;" (click)="editProduct(item)" (click)="editProductThroughDialog(item)">Edit</a>
                                     <a class="btn max-2 m-2" style="background-color: rgb(219, 111, 111)" (click)="deleteProduct(item)">Delete</a>
                                 </div>
                             </div>

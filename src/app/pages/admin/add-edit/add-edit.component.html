@@ -1,5 +1,5 @@
 <form #data="ngForm" (ngSubmit)="Add(data.value)">
-    <div class="header">Add Product</div>
+    <div class="header">{{ isEditModeData.isEditMode ? 'Update' : 'Add' }} Product</div>
     <div class="formfield">
         <mat-form-field>
             <mat-label>Product SKU</mat-label>
@@ -45,6 +45,6 @@
     </div>
     <div class="action">
         <button mat-flat-button color="warn" mat-dialog-close>Cancel</button>
-        <button mat-flat-button color="primary" [mat-dialog-close]="data.value">Add</button>
+        <button mat-flat-button color="primary" [mat-dialog-close]="data.value">{{ isEditModeData.isEditMode ? 'Update' : 'Add' }}</button>
     </div>
 </form>
