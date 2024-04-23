@@ -16,18 +16,18 @@ import { MatDialog } from '@angular/material/dialog';
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
   isEditMode: boolean = false;
-  addEdit : boolean = false;
+  addEdit: boolean = false;
   productObj: any = {
-    "productId": 0,
-    "productSku": "",
-    "productName": "",
-    "productPrice": 0,
-    "productShortName": "",
-    "productDescription": "",
-    "createdDate": new Date(),
-    "deliveryTimeSpan": "",
-    "categoryId": 0,
-    "productImageUrl": ""
+    "ProductId": 0,
+    "ProductSku": "",
+    "ProductName": "",
+    "ProductPrice": 0,
+    "ProductShortName": "",
+    "ProductDescription": "",
+    "CreatedDate": new Date(),
+    "DeliveryTimeSpan": "",
+    "CategoryId": 56,
+    "ProductImageUrl": ""
   }
   categoryList: any[] = [];
   productsList: any[] = []
@@ -55,7 +55,7 @@ export class ProductsComponent implements OnInit {
       disableClose: true,
       data: {
         categoryList: this.categoryList,
-        isEditMode:false
+        isEditMode: false
       }
     });
 
@@ -63,14 +63,15 @@ export class ProductsComponent implements OnInit {
       this.dataFromDialog = result;
       console.log("formDataAtProductPage", this.dataFromDialog);
 
-      this.productObj.productSku = this.dataFromDialog.productSku;
-      this.productObj.productName = this.dataFromDialog.productName;
-      this.productObj.productPrice = this.dataFromDialog.productPrice;
-      this.productObj.productShortName = this.dataFromDialog.productShortName;
-      this.productObj.productDescription = this.dataFromDialog.productDescription;
-      this.productObj.deliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
-      this.productObj.categoryId = this.dataFromDialog.categoryId;
-      this.productObj.productImageUrl = this.dataFromDialog.productImageUrl;
+      this.productObj.ProductSku = this.dataFromDialog.productSku;
+      this.productObj.ProductName = this.dataFromDialog.productName;
+      this.productObj.ProductPrice = this.dataFromDialog.productPrice;
+      this.productObj.ProductShortName = this.dataFromDialog.productShortName;
+      this.productObj.ProductDescription = this.dataFromDialog.productDescription;
+      this.productObj.DeliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
+      // this.productObj.CategoryId = this.dataFromDialog.categoryId;
+      this.productObj.ProductImageUrl = this.dataFromDialog.productImageUrl;
+      
       console.log("productObj", this.productObj)
 
 
@@ -109,14 +110,14 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.productSrv.getProduct().subscribe((res: any) => {
       this.productsList = res.data;
-      console.log("llpp", this.productsList)
+      console.log("productsList", this.productsList)
     });
   }
 
   getAllCategory() {
     this.productSrv.getCategory().subscribe((result: any) => {
       this.categoryList = result.data;
-      console.log("lll", this.categoryList);
+      console.log("categoryList", this.categoryList);
     });
   }
   // getAllCategory() {
@@ -141,6 +142,7 @@ export class ProductsComponent implements OnInit {
     this.isSidePanelVisible = false;
   }
   
+
   deleteProduct(obj: any) {
     console.log("kk", obj.productId)
     this.productSrv.deleteProduct(obj.productId).subscribe((res) => {
@@ -166,7 +168,7 @@ export class ProductsComponent implements OnInit {
       data: {
         categoryList: this.categoryList,
         item: item,
-        isEditMode:true
+        isEditMode: true
       }
 
       // data: {name: this.name, animal: this.animal},
@@ -176,22 +178,23 @@ export class ProductsComponent implements OnInit {
       this.dataFromDialog = result;
       console.log("formDataAtProductPage", this.dataFromDialog);
 
-      this.productObj.productSku = this.dataFromDialog.productSku;
-      this.productObj.productName = this.dataFromDialog.productName;
-      this.productObj.productPrice = this.dataFromDialog.productPrice;
-      this.productObj.productShortName = this.dataFromDialog.productShortName;
-      this.productObj.productDescription = this.dataFromDialog.productDescription;
-      this.productObj.deliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
-      this.productObj.categoryId = this.dataFromDialog.categoryId;
-      this.productObj.productImageUrl = this.dataFromDialog.productImageUrl;
+      this.productObj.ProductSku = this.dataFromDialog.productSku;
+      this.productObj.ProductName = this.dataFromDialog.productName;
+      this.productObj.ProductPrice = this.dataFromDialog.productPrice;
+      this.productObj.ProductShortName = this.dataFromDialog.productShortName;
+      this.productObj.ProductDescription = this.dataFromDialog.productDescription;
+      this.productObj.DeliveryTimeSpan = this.dataFromDialog.deliveryTimeSpan;
+      // this.productObj.CategoryId = this.dataFromDialog.categoryId;
+      this.productObj.ProductImageUrl = this.dataFromDialog.productImageUrl;
       console.log("productObj", this.productObj)
-
 
       setTimeout(() => {
         this.onUpdate()
       }, 3000)
+      
     });
 
 
   }
+
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ProductService } from '../../../services/product/product.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoriesComponent {
   categoryList:any[]=[]
-  constructor(private productSrv:ProductService){
+  constructor(private productSrv:ProductService,private router:Router){
     this.getAllCategory();
   }
  
@@ -22,4 +23,9 @@ export class CategoriesComponent {
       console.log("lol", this.categoryList);
     });
   }
+
+  navigateToProduct(id:number) {
+    console.log("pp",id)
+    this.router.navigate(['/categoryProduct',id])
+}
 }

@@ -26,8 +26,10 @@ export class SellerAuthComponent implements OnInit {
   login(data: any) {
     console.log("dataa", data);
     if (data.email === "admin@gmail.com" && data.password === "Admin@123") {
+      sessionStorage.setItem("isLogedin",'true')
       this.router.navigate(['products']);
     } else {
+      sessionStorage.setItem("isLogedin",'false')
       alert("Please enter correct Email and Password");
     }
   }

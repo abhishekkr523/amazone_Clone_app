@@ -4,25 +4,37 @@ import { Component } from '@angular/core';
 import { ProductsComponent } from './pages/admin/products/products.component';
 import { CategoriesComponent } from './pages/admin/categories/categories.component';
 import { SellerAuthComponent } from './pages/admin/seller-auth/seller-auth.component';
+import { authGuard } from './auth/auth.guard';
+import { HomeComponent } from './pages/admin/home/home.component';
+import { CategoryProductComponent } from './category-product/category-product.component';
 
 export const routes: Routes = [
-   
-    
+
     {
         path: "",
         component: LayoutComponent,
         children: [
-            // {
-            //     path: '',
-            //     component: ProductsComponent
-            // },
+            {
+                path: '',
+                component: HomeComponent,
+            },
+            {
+                path: 'home',
+                component: HomeComponent,
+            },
+            {
+                path: 'categoryProduct/:id',
+                component: CategoryProductComponent,
+            },
+
             {
                 path: 'login',
                 component: SellerAuthComponent
             },
             {
                 path: 'products',
-                component: ProductsComponent
+                component: ProductsComponent,
+                canActivate: [authGuard]
             },
             {
                 path: 'categories',
@@ -30,7 +42,7 @@ export const routes: Routes = [
             },
         ]
     },
-    
+
 
 
 ];
