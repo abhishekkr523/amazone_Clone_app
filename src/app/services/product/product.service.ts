@@ -31,5 +31,16 @@ export class ProductService {
   getAllProductByCategoryId(categoryId: any){
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT_BY_CATEGORY_ID + categoryId);
   }
-
+  addToCart(obj:any){
+    return this.http.post(Constant.API_END_POINT + Constant.METHODS.ADD_TO_CART,obj);
+  }
+  GetCartProductsByCustomerId( CustId: number){
+    return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_CART_PRODUCTS_BY_CUSTOMER_ID + CustId);
+  }
+  deleteProductFromCartById(productId: number){
+    return this.http.get(Constant.API_END_POINT + Constant.METHODS.DELETE_PRODUCT_FROM_CART_BY_ID + productId);
+  }
+  getProductById(productId:number){
+    return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_PRODUCT_BY_ID + productId);
+  }
 }

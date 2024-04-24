@@ -7,5 +7,9 @@ export const Constant = {
         CREATE_PRODUCT:'CreateProduct',
         UPDATE_PRODUCT:'UpdateProduct',
         DELETE_PRODUCT:'DeleteProductById?id=',
+        ADD_TO_CART:'AddToCart',
+        GET_CART_PRODUCTS_BY_CUSTOMER_ID:'GetCartProductsByCustomerId?id=',
+        DELETE_PRODUCT_FROM_CART_BY_ID:'DeleteProductFromCartById?id=',
+        GET_PRODUCT_BY_ID:'GetProductById?id='
     }
 }
